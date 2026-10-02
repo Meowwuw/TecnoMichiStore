@@ -10,4 +10,20 @@ export function obtenerProductos(){
     });
 }
 
+export function crearProducto(producto) {
+    return fetch(`${API_URL}/productos`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(producto)
+    })
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error("Error al crear producto");
+        }
+
+        return response.json();
+    });
+}
 
